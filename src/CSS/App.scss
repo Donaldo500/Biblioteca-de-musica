@@ -1,0 +1,13 @@
+@import "./Library";
+@import "./Header";
+@import "./SearchResults";
+
+body{
+    background-color:  rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 100%;  
+}
+
