@@ -72,6 +72,24 @@ header svg {
   flex-direction: column;
   gap: 30px;
 }
+.search .bigtext {
+  margin: 100px 0 0;
+  padding: 20px;
+  align-self: center;
+  font-size: clamp(15px, 2vw, 100px);
+}
+.search div {
+  align-self: center;
+  display: flex;
+}
+.search div button {
+  all: unset;
+  background-color: rgb(0, 255, 0);
+  border-radius: 30px;
+  padding: 15px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
 .search #searchbar {
   all: unset;
   box-sizing: border-box;
@@ -83,13 +101,21 @@ header svg {
   margin: 0 15px;
   align-self: center;
 }
+.search #atLibrary {
+  background-color: rgb(255, 255, 255);
+  cursor: auto;
+  color: rgb(0, 0, 0);
+  align-self: center;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 0;
+}
 .search ul {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin: 0 10px;
   padding: 0;
-  align-self: center;
   gap: 15px;
   margin-bottom: 30px;
 }
@@ -97,12 +123,21 @@ header svg {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
-  cursor: pointer;
+  gap: 20px;
+  padding: 15px;
 }
-.search ul li img {
+.search ul li a {
+  align-self: center;
+}
+.search ul li a img {
   max-width: 150px;
   width: 100%;
+  cursor: pointer;
+}
+.search ul li .songinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .search ul li .songinfo p {
   display: flex;
@@ -116,6 +151,36 @@ header svg {
   padding: 10px;
   border-radius: 30px;
   color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.songDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 30px;
+}
+.songDetails .songdetatext {
+  margin: 100px 0 0;
+  padding: 20px;
+  align-self: center;
+  font-size: clamp(15px, 2vw, 100px);
+}
+.songDetails a {
+  align-self: center;
+}
+.songDetails a img {
+  max-width: 200px;
+}
+.songDetails .songinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.songDetails .songinfo p {
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 body {
