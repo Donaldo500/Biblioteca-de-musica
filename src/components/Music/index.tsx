@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Musictext, Musicimg, SongInf, Mimg } from "./styles";
 
 type Songtype = {
     id: number;
@@ -18,13 +18,13 @@ const Music = ({music}:SongProps) => {
 
     return(
         <>
-            <Link to={`/song/${music.id}`}><img src={music.img} alt="Song_Image"/></Link>
+            <Musicimg to={`/song/${music.id}`}><Mimg src={music.img} alt="Song_Image"/></Musicimg>
 
-            <div className="songinfo">
-                <p>{music.songName}</p> 
-                <p>{music.artist}</p>
-                <p>Album: {music.albumName}</p>
-            </div>
+            <SongInf>
+                <Musictext>{music.songName}</Musictext> 
+                <Musictext>{music.artist}</Musictext>
+                <Musictext>Album: {music.albumName}</Musictext>
+            </SongInf>
 
         </>
     );

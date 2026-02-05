@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Music from "../Music";
 import React from "react";
 import useFetchSongs from "../../Hooks/useFetchSongs";
+import { AddLibrary, AtLibrary, Bar, BarFather, NoContent, SearchEle, SearchMain } from "./styles";
 
 interface SearchProps{
     setArtist: (value:string) => void;
@@ -68,49 +69,48 @@ const SearchResults = ({setArtist, artist, songs, setSongs, songsLibrary, setSon
 
     const renderSongs = () =>{
         return(
-            <ul>
+            <SearchMain>
                 {songs.map((song) => (
-                    <li key={song.id}>
+                    <SearchEle key={song.id}>
                         <Music music={song}/>
 
                         {
                             isInLibrary(song.id) ? (
-                                <p id="atLibrary">In Library</p>
+                                <AtLibrary>In Library</AtLibrary>
                             ) : (
-                                <button onClick={() => addToLibrary(song.id)}>Add to Library</button>
+                                <AddLibrary onClick={() => addToLibrary(song.id)}>Add to Library</AddLibrary>
                             )
                         }   
-                    </li>
+                    </SearchEle>
                 ))}
-            </ul>
+            </SearchMain>
         );
     }
 
     const renderContent = () => {
-        if(fetchSongs.isLoading) return <p className="bigtext">Loading...</p>
-        if(fetchSongs.error) return <p className="bigtext">{fetchSongs.error}</p>
-        if(artist && fetchSongs.Songs.length === 0) return <p className="bigtext">No se encontraron canciones del artista</p>
+        if(fetchSongs.isLoading) return <NoContent>Loading...</NoContent>
+        if(fetchSongs.error) return <NoContent>{fetchSongs.error}</NoContent>
+        if(artist && fetchSongs.Songs.length === 0) return <NoContent>No se encontraron canciones del artista</NoContent>
         return renderSongs();
     }
 
     return(
-        <div className="search">
-                <div>
-                    <input
-                    type="text"
-                    placeholder="Buscar Artista"
-                    value={search}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
-                    onKeyDown={enterSearch}
-                    id="searchbar"
-                    />
+        <div>
+            <BarFather>
+                <Bar
+                type="text"
+                placeholder="Buscar Artista"
+                value={search}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+                onKeyDown={enterSearch}
+                />
 
-                    <button onClick={clickSearch}>Search</button>
-                </div>
-                
+                <AddLibrary onClick={clickSearch}>Search</AddLibrary>
+            </BarFather>
+            
 
-                {renderContent()}
-            </div>
+            {renderContent()}
+        </div>
     );
 }
 

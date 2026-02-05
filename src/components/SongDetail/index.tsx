@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import React from "react";
 import Music from "../Music";
+import { Details, NContent } from "./styles";
 
 type Songtype = {
     id: number;
@@ -64,15 +65,15 @@ const SongDetails = ({songs, songsLibrary}:infoProps) =>{
     }
 
     const infoSongRender = () => {
-        if(infoSong.isLoading) return <p className="songdetatext">Loading...</p>
-        if(infoSong.error) return <p className="songdetatext">No se encontro la cancion</p>
+        if(infoSong.isLoading) return <NContent>Loading...</NContent>
+        if(infoSong.error) return <NContent>No se encontro la cancion</NContent>
         return renderSong();
     }
 
     return(
-        <div className="songDetails">
+        <Details>
             {infoSongRender()}
-        </div>
+        </Details>
     );
 }
 
