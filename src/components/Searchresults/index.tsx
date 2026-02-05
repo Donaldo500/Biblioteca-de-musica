@@ -97,7 +97,7 @@ const SearchResults = ({setArtist, artist, songs, setSongs, songsLibrary, setSon
     return(
         <div>
             <BarFather>
-                <Bar
+                <Bar error={fetchSongs.error}
                 type="text"
                 placeholder="Buscar Artista"
                 value={search}

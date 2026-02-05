@@ -4,17 +4,12 @@ import reset from "styled-reset";
 const GlobalStyle = createGlobalStyle`
     ${reset}
     body, button{
-        background-color:  rgb(0, 0, 0);
-        color: rgb(255, 255, 255);
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
+        background-color:  ${props => props.theme.colors.background};
+        color: ${props => props.theme.colors.text};
+        font-family: ${props => props.theme.fonts.base};
         font-size: 15px;
         width: 100%;  
     }
-
-    a{
-        text-decoration: none;
-    }
-`
+`;
 
 export default GlobalStyle;

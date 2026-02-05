@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
+interface SongsProps {
+    error?: string | null;
+}
+
 const BarFather = styled.div`
     display: flex;
     justify-content: center;
 `;
 
-const Bar = styled.input`
+const Bar = styled.input<SongsProps>`
     all: unset;
     box-sizing: border-box;
     border-radius: 30px;
     padding: 10px 20px;
-    border: 2px solid;
+    border: 2px solid ${props => (props.error ? "red" : "white")};
     max-width: 400px;
     width: 100%;
     margin: 0 15px;
@@ -34,17 +38,17 @@ const SearchEle = styled.li`
 const AddLibrary = styled.button`
     all: unset;
     align-self: center;
-    background-color: rgb(0, 255, 0);
+    background-color: ${props => props.theme.colors.button};
     padding: 10px;
     border-radius: 30px;
-    color: rgb(0, 0, 0);
+    color: ${props => props.theme.colors.textSecondary};
     cursor: pointer;
 `;
 
 const AtLibrary = styled.p`
-    background-color: rgb(255, 255, 255);
+    background-color: ${props => props.theme.colors.backgroundSecondary};
     cursor: auto;
-    color: rgb(0, 0, 0);
+    color: ${props => props.theme.colors.textSecondary};
     align-self: center;
     border-radius: 30px;
     padding: 10px;

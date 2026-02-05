@@ -1,11 +1,13 @@
 const Theme = {
     colors: {
-        primary: '#007bff',
-        secondary: '#6c757d',
-        background: '#f0f0f0'
+        background: '#000000',
+        backgroundSecondary: '#ffffff',
+        text: '#ffffff',
+        textSecondary: '#000000',
+        button: 'rgb(0, 255, 0)',
     },
     fonts: {
-        base: 'Helvetica, Arial, sans-serif'
+        base: 'Arial, Helvetica, sans-serif',
     },
 }
 
