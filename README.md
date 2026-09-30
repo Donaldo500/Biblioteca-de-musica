@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Biblioteca de música
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![styled-components](https://img.shields.io/badge/styled--components-6-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-7-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-1-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
 
-## Available Scripts
+Aplicación de una sola página (SPA) construida con **React** y **TypeScript** que permite buscar canciones por artista usando la API pública de **TheAudioDB**, agregarlas a una biblioteca personal y ver el detalle de cada canción. Es la segunda versión del proyecto [Biblioteca-musical](https://github.com/Donaldo500/Biblioteca-musical).
 
-In the project directory, you can run:
+## Capturas de pantalla
 
-### `npm start`
+| Búsqueda por artista | Tu biblioteca |
+| --- | --- |
+| ![Búsqueda de canciones](docs/screenshots/biblioteca-busqueda.png) | ![Biblioteca personal](docs/screenshots/biblioteca-libreria.png) |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Funcionalidades
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Búsqueda por artista**: consulta los álbumes del artista y, en paralelo con `Promise.all`, obtiene las canciones de cada álbum.
+- **Agregar a la biblioteca**: cada resultado muestra el botón *Add to Library* o la etiqueta *In Library* si ya fue agregada.
+- **Biblioteca personal** (`/library`): lista las canciones guardadas y permite quitarlas.
+- **Detalle de canción** (`/song/:id`): vista individual accesible desde la portada de cada canción.
+- **Estados de carga y error**: mensajes de *Loading...* y *No se encontraron canciones del artista*; la barra de búsqueda cambia de color cuando hay un error.
+- **Tema global** con `ThemeProvider` y `createGlobalStyle` (colores y tipografía centralizados).
 
-### `npm test`
+## Tecnologías utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Tecnología | Uso |
+| --- | --- |
+| React 19 | Componentes funcionales y hooks (`useState`, `useEffect`) |
+| TypeScript 5 | Tipado de props, estado y respuestas de la API |
+| React Router 7 | Rutas `/`, `/library` y `/song/:id` |
+| styled-components 6 | Estilos por componente y tema global |
+| styled-reset | Reinicio de estilos del navegador |
+| Axios | Peticiones HTTP a TheAudioDB |
+| Create React App | Entorno de desarrollo y build |
 
-### `npm run build`
+## Estructura del proyecto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```text
+src/
+├── App.js                      # Rutas, estado global de canciones y biblioteca
+├── Hooks/
+│   └── useFetchSongs.ts        # Hook personalizado: álbumes -> canciones del artista
+├── components/
+│   ├── Header/                 # Navegación (inicio y biblioteca)
+│   ├── Searchresults/          # Barra de búsqueda y resultados
+│   ├── Library/                # Biblioteca personal
+│   ├── Music/                  # Tarjeta reutilizable de canción
+│   └── SongDetail/             # Vista de detalle por id
+├── theme/                      # Tema y estilos globales
+└── styles/styled.d.ts          # Tipos del tema para styled-components
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Instalación y uso
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Requisitos
 
-### `npm run eject`
+- Node.js 18 o superior
+- npm
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pasos
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/Donaldo500/Biblioteca-de-musica.git
+cd Biblioteca-de-musica
+npm install --legacy-peer-deps
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+La aplicación se abre en [http://localhost:3000](http://localhost:3000).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> Se usa `--legacy-peer-deps` porque `react-scripts` 5 declara compatibilidad con TypeScript 4, mientras que el proyecto usa TypeScript 5. Sin esa opción `npm install` termina con un error `ERESOLVE`.
 
-## Learn More
+### Scripts disponibles
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Comando | Descripción |
+| --- | --- |
+| `npm start` | Servidor de desarrollo con recarga en caliente |
+| `npm run build` | Build optimizado para producción en la carpeta `build/` |
+| `npm test` | Ejecuta las pruebas en modo interactivo |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Ejemplos de uso
 
-### Code Splitting
+1. Escribe el nombre de un artista (por ejemplo, *Coldplay*) y presiona **Enter** o el botón **Search**.
+2. Presiona **Add to Library** en las canciones que quieras guardar.
+3. Abre la biblioteca con el ícono de lista de reproducción en la esquina superior derecha.
+4. Haz clic en la portada de una canción para ver su detalle, o en el ícono de papelera para quitarla de la biblioteca.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Uso del hook personalizado:
 
-### Analyzing the Bundle Size
+```tsx
+const { Songs, isLoading, error } = useFetchSongs("Coldplay");
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> La aplicación usa la clave pública de pruebas de TheAudioDB (`123`), que limita la cantidad de resultados por consulta.
 
-### Making a Progressive Web App
+## Contribuciones
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Proyecto individual con fines de aprendizaje. Si quieres proponer una mejora:
 
-### Advanced Configuration
+1. Haz un fork del repositorio.
+2. Crea una rama: `git checkout -b mejora/nombre`.
+3. Haz commit de tus cambios y abre un pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Autor
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Donaldo Ibarra** - [@Donaldo500](https://github.com/Donaldo500)
