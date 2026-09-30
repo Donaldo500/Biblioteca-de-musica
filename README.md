@@ -64,13 +64,13 @@ src/
 ```bash
 git clone https://github.com/Donaldo500/Biblioteca-de-musica.git
 cd Biblioteca-de-musica
-npm install --legacy-peer-deps
+npm install
 npm start
 ```
 
 La aplicación se abre en [http://localhost:3000](http://localhost:3000).
 
-> Se usa `--legacy-peer-deps` porque `react-scripts` 5 declara compatibilidad con TypeScript 4, mientras que el proyecto usa TypeScript 5. Sin esa opción `npm install` termina con un error `ERESOLVE`.
+> El archivo `.npmrc` incluye `legacy-peer-deps=true` porque `react-scripts` 5 declara compatibilidad con TypeScript 4 y el proyecto usa TypeScript 5. Gracias a eso basta con `npm install`.
 
 ### Scripts disponibles
 

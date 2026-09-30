@@ -30,7 +30,7 @@ const SearchResults = ({setArtist, artist, songs, setSongs, songsLibrary, setSon
     useEffect(() => {
         if (fetchSongs.Songs.length === 0) return;
             setSongs(fetchSongs.Songs);
-    }, [fetchSongs]);
+    }, [fetchSongs, setSongs]);
 
     const isInLibrary = (id: number) => {
         return songsLibrary.some(song => song.id === id && song.library);
